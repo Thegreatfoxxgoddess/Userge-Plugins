@@ -78,7 +78,7 @@ async def deezload(message: Message):
                 return
         if not REX.search(input_link):
             await message.edit(
-                "As per my Blek Mejik Regex, this link is not supported."
+                "this link is not supported >.<."
             )
             return
     else:
@@ -89,7 +89,7 @@ async def deezload(message: Message):
                 artist, song = input_.split("-")
                 quality = d_quality
             else:
-                await message.edit(f"🙂K!! Check `{cmd}help deezload`")
+                await message.edit(”>.< Check `{cmd}help deezload`")
                 return
         await message.edit(f"Searching Results for {song}")
         try:
@@ -102,10 +102,10 @@ async def deezload(message: Message):
                 recursive_download=True,
                 not_interface=True,
             )
-            await message.edit("Song found, Now Uploading 📤", del_in=5)
+            await message.edit("Song found, Now Uploading", del_in=5)
             await audio_upload(message, Path(track), True)
         except Exception as e_r:
-            await message.edit("Song not Found 🚫")
+            await message.edit("Song not Found")
             await Clogger.log(f"#ERROR\n\n{e_r}")
         await message.delete()
         shutil.rmtree(TEMP_PATH, ignore_errors=True)
@@ -156,7 +156,7 @@ async def proper_trackdl(link, qual, msg, client, dir_):
 async def batch_dl(link, qual, msg, client, dir_, allow_zip):
     if "spotify" in link:
         if "album/" in link:
-            await msg.edit("Trying to download album 🤧")
+            await msg.edit("Trying to download album")
             if allow_zip:
                 _, zip_ = await pool.run_in_thread(client.download_albumspo)(
                     link,
@@ -167,7 +167,7 @@ async def batch_dl(link, qual, msg, client, dir_, allow_zip):
                     not_interface=True,
                     zips=True,
                 )
-                await msg.edit("Sending as Zip File 🗜")
+                await msg.edit("Sending as Zip File")
                 await doc_upload(msg, Path(zip_), True)
             else:
                 album_list = await pool.run_in_thread(client.download_albumspo)(
@@ -179,11 +179,11 @@ async def batch_dl(link, qual, msg, client, dir_, allow_zip):
                     not_interface=True,
                     zips=False,
                 )
-                await msg.edit("Uploading Tracks 📤", del_in=5)
+                await msg.edit("Uploading Tracks", del_in=5)
                 for track in album_list:
                     await audio_upload(msg, Path(track), True)
         if "playlist/" in link:
-            await msg.edit("Trying to download Playlist 🎶")
+            await msg.edit("Trying to download Playlist")
             if allow_zip:
                 _, zip_ = await pool.run_in_thread(client.download_playlistspo)(
                     link,
@@ -194,7 +194,7 @@ async def batch_dl(link, qual, msg, client, dir_, allow_zip):
                     not_interface=True,
                     zips=True,
                 )
-                await msg.edit("Sending as Zip 🗜", del_in=5)
+                await msg.edit("Sending as Zip", del_in=5)
                 await doc_upload(msg, Path(zip_), True)
             else:
                 album_list = await pool.run_in_thread(client.download_playlistspo)(
@@ -206,13 +206,13 @@ async def batch_dl(link, qual, msg, client, dir_, allow_zip):
                     not_interface=True,
                     zips=False,
                 )
-                await msg.edit("Uploading Tracks 📤", del_in=5)
+                await msg.edit("Uploading Tracks", del_in=5)
                 for track in album_list:
                     await audio_upload(msg, Path(track), True)
 
     if "deezer" in link:
         if "album/" in link:
-            await msg.edit("Trying to download album 🤧")
+            await msg.edit("Trying to download album")
             if allow_zip:
                 _, zip_ = await pool.run_in_thread(client.download_albumdee)(
                     link,
