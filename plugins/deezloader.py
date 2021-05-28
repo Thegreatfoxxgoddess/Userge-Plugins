@@ -13,7 +13,7 @@ ARL_TOKEN = os.environ.get("ARL_TOKEN")
 TEMP_PATH = "deezdown_temp/"
 REX = re.compile(
     r"https?:\/\/(open/.spotify|www/.deezer|deezer)\.com\/"
-    r"https?:\/\/(deezer\.page)\.link\/”
+    r"https?:\/\/(deezer\.page)\.link\/w{17,17}"
     r"(track|album|play|track)\/[A-Z0-9a-z]{3,}"
 )
 ARL_HELP = """**Oops, Time to Help Yourself**
