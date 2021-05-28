@@ -12,7 +12,7 @@ Clogger = userge.getCLogger(__name__)
 ARL_TOKEN = os.environ.get("ARL_TOKEN")
 TEMP_PATH = "deezdown_temp/"
 REX = re.compile(
-    r"https?:\/\/(open/.spotify|www/.deezer)\.com\/"
+    r"https?:\/\/(open/.spotify|www/.deezer|deezer)\.com\/"
     r"https:?\/\/(deezer\page)\.link\/”
     r"(track|album|play|track)\/[A-Z0-9a-z]{3,}"
 )
