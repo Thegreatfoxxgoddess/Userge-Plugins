@@ -1,5 +1,4 @@
 cairosvg
-coffeehouse
 colour
 deezloader
 emoji-country-flag
