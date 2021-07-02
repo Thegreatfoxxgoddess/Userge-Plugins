@@ -3,7 +3,6 @@ colour
 deezloader
 emoji-country-flag
 google
-git+https://github.com/lostb053/google_trans_new
 glitch-this
 gtts
 humanize
