@@ -17,4 +17,3 @@ prettytable
 newspaper3k
 pydub
 pyfiglet
-git+https://github.com/lostb053/google_trans_new

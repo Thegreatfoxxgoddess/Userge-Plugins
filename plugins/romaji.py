@@ -2,7 +2,7 @@
 ## on github as https://github.com/midnightmadwalk
 ## i just improvised it a lil'...phew..
 
-from google_trans_new import google_translator
+from .google_trans_new import google_translator
 from userge import Message, userge
 
 translator = google_translator()
