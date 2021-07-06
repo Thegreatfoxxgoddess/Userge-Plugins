@@ -343,7 +343,7 @@ async def manga_arch(message: Message):
     name = f"""[{c_flag}]**{romaji}**
         __{english}__
         {native}"""
-    if english==None:
+    if english is None:
         name = f"""[{c_flag}]**{romaji}**
         {native}"""
     finals_ = f"{name}\n\n"
@@ -622,7 +622,7 @@ async def get_ani(vars_):
             sql_id = f"{i['node']['id']}"
             break
     additional = f"{prql}{sql}"
-    dura = f"\n➤ **DURATION:** `{duration} min/ep`" if duration!=None else ""
+    dura = f"\n➤ **DURATION:** `{duration} min/ep`" if duration is not None else ""
     charlist = []
     for char in data["characters"]["nodes"]:
         charlist.append(f"    •{char['name']['full']}")
@@ -643,8 +643,8 @@ async def get_ani(vars_):
         else:
             th = pos_no(x)
         air_on += f" | {eps}{th} eps"
-    if air_on==None:
-        eps_ =  f" | {episodes} eps" if episodes!=None else ""
+    if air_on is None:
+        eps_ =  f" | {episodes} eps" if episodes is not None else ""
         status_air = f"➤ <b>STATUS:</b> `{status}{eps_}`"
     else:
         status_air = f"➤ <b>STATUS:</b> `{status}`\n➤ <b>NEXT AIRING:</b> `{air_on}`"
@@ -788,7 +788,7 @@ def get_btns(result: list, lsqry):
             buttons.append([InlineKeyboardButton(text="Prequel", callback_data=f"btn_{result[2]}{qry}")])
     btn = []
     btn.append(InlineKeyboardButton(text="Description", callback_data=f"desc_{result[6]}{qry}"))
-    if result[4]==False:
+    if result[4] is False:
         btn.append(InlineKeyboardButton(text="Download", switch_inline_query_current_chat=f"anime {result[5]}"))
     btn.append(InlineKeyboardButton(text="List Series", callback_data=f"ls_{result[6]}{qry}"))
     buttons.append(btn)

@@ -308,7 +308,7 @@ class google_translator:
                                     headers=headers,
                                     )
         try:
-            if self.proxies == None or type(self.proxies) != dict:
+            if self.proxies  is None or type(self.proxies) != dict:
                 self.proxies = {}
             with requests.Session() as s:
                 s.proxies = self.proxies
@@ -330,7 +330,7 @@ class google_translator:
                                 sentences = response[0][5]
                             else: ## only url
                                 sentences = response[0][0]
-                                if pronounce == False:
+                                if pronounce  is False:
                                     return sentences
                                 elif pronounce == True:
                                     return [sentences,None,None]
@@ -339,7 +339,7 @@ class google_translator:
                                 sentence = sentence[0]
                                 translate_text += sentence.strip() + ' '
                             translate_text = translate_text
-                            if pronounce == False:
+                            if pronounce  is False:
                                 return translate_text
                             elif pronounce == True:
                                 pronounce_src = (response_[0][0])
@@ -349,7 +349,7 @@ class google_translator:
                             sentences = []
                             for i in response:
                                 sentences.append(i[0])
-                            if pronounce == False:
+                            if pronounce  is False:
                                 return sentences
                             elif pronounce == True:
                                 pronounce_src = (response_[0][0])
@@ -387,7 +387,7 @@ class google_translator:
                                     data=freq,
                                     headers=headers)
         try:
-            if self.proxies == None or type(self.proxies) != dict:
+            if self.proxies  is None or type(self.proxies) != dict:
                 self.proxies = {}
             with requests.Session() as s:
                 s.proxies = self.proxies
