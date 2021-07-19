@@ -55,9 +55,11 @@ async def last_fm_(message: Message):
         song_ = recent_song[0]
         sn, an = song_["name"], song_["artist"]["#text"]
         gt = (await info("track", query, an, sn))[1]["track"]
-        y = [i.replace(" ", "_").replace("-", "_") for i in [tg["name"] for tg in gt["toptags"]["tag"]]]
-        z = [k for k in y if y!=[] and k.lower() in tglst()]
-        neutags = " #".join(z[i] for i in range(min(len(z), 4)))
+        neutags = ""
+        if not gt["toptags"] == '':
+            y = [i.replace(" ", "_").replace("-", "_") for i in [tg["name"] for tg in gt["toptags"]["tag"]]]
+            z = [k for k in y if y!=[] and k.lower() in tglst()]
+            neutags = " #".join(z[i] for i in range(min(len(z), 4)))
         img = ri(recent_song[0].get("image")[3].get("#text"))
         rep = f"[\u200c]({img})**{qd}** is currently listening to: \n🎧  `{an} - {sn}`"
         rep += ", ♥️" if gt["userloved"] != "0" else ""
